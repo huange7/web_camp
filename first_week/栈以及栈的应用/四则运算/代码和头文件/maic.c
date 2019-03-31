@@ -16,5 +16,6 @@ int main()
     destroyLStack(number);
     free(symbol);
     free(number);
+    system("pause");
     return 0;
 }

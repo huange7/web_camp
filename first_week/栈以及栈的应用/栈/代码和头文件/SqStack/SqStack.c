@@ -32,8 +32,11 @@ Status getTopStack(SqStack *s,ElemType *e)   //得到栈顶元素
         return ERROR;
     }
     else
+    {
         e=s->elem;
-    printf("栈顶元素为%d\n",*e);
+        printf("栈顶元素为%d\n",*e);
+    }
+
     return SUCCESS;
 }
 Status clearStack(SqStack *s)   //清空栈
@@ -43,7 +46,7 @@ Status clearStack(SqStack *s)   //清空栈
         printf("该栈为空\n");
         return ERROR;
     }
-    for(;s->top<0;s->top--)
+    for(;s->top>-1;s->top--)
     {
         s->elem[s->top]=0;
     }
@@ -52,7 +55,8 @@ Status clearStack(SqStack *s)   //清空栈
 Status destroyStack(SqStack *s)  //销毁栈
 {
     free(s->elem);
-    free(s);
+	s->size = 0;
+    s->top = -1;
     printf("销毁成功\n");
 }
 Status stackLength(SqStack *s,int *length)   //检测栈长度
@@ -88,19 +92,19 @@ Status popStack(SqStack *s,ElemType *data)   //出栈
 
 void  choose(SqStack *s)
 {
-    int sizes;
+    int sizes = 0;
     printf("请输入你要初始化栈的大小\n");
     sizes=inputError(sizes);
     initStack(s,sizes);
     int a=1;
     while(a==1)
     {
-        int n;
+        int n = 0;
         printf("请输入你的选择\n");
         n=inputError(n);
         if(n==6)
         {
-            int data;
+            int data = 0;
             printf("请输入要入栈的元素\n");
             data=inputError(data);
             pushStack(s,data);
@@ -108,7 +112,7 @@ void  choose(SqStack *s)
         else if(n==7)
         {
             int data;
-            popStack(s,&data);
+            if(popStack(s,&data))
             printf("出栈的元素为%d\n",data);
         }
         else if(n==1)
@@ -119,7 +123,7 @@ void  choose(SqStack *s)
         }
         else if(n==2)
         {
-            int *data;
+            int *data = NULL;
             getTopStack(s,data);
         }
         else if(n==3)
@@ -130,7 +134,7 @@ void  choose(SqStack *s)
             destroyStack(s);
         else if(n==5)
         {
-            int *length;
+            int *length = NULL;
             stackLength(s,length);
         }
         else

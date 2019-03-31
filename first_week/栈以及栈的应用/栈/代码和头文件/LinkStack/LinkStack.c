@@ -36,18 +36,6 @@ Status clearLStack(LinkStack *s)   //清空栈
 {
     if(isEmptyLStack(s))
         return ERROR;
-    LinkStackPtr p = s->top;
-    while(p)
-    {
-        p->data = 0;
-        p=p->next;
-    }
-    return SUCCESS;
-}
-Status destroyLStack(LinkStack *s)   //销毁栈
-{
-    if(isEmptyLStack(s))
-        return ERROR;
     while(s->top != NULL)
     {
         LinkStackPtr p = s->top;
@@ -55,6 +43,14 @@ Status destroyLStack(LinkStack *s)   //销毁栈
         free(p);
     }
     s->count = 0;
+    return SUCCESS;
+}
+Status destroyLStack(LinkStack **s)   //销毁栈
+{
+    if(s == NULL)
+        return ERROR;
+    clearLStack(*s);
+    free(s);
     return SUCCESS;
 }
 Status LStackLength(LinkStack *s,int *length)    //检测栈长度
@@ -145,7 +141,7 @@ void selcetAction(LinkStack *s)//选择操作
         }
     case 4:
         {
-            if(destroyLStack(s))
+            if(destroyLStack(&s))
                 printf("\t\t\t\t销毁成功！\n");
             else
                 printf("\t\t\t\t销毁失败！\n");

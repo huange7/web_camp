@@ -11,7 +11,6 @@ int main()
         printf("\n\t\t\t\t你想继续吗？(1:继续/其他：否)");
         scanf("%d",&n);
     }
-    destroyLStack(s);
-    free(s);
+    destroyLStack(&s);
     return 0;
 }
