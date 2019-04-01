@@ -97,8 +97,8 @@ Status popLStackchar(LinkStack *s,char *data)   //出栈
 void inputString(char s[])
 {
     int i=0;
-    printf("请输入表达式：");
-    scanf("%s",s);
+    printf("请输入表达式:");
+    scanf("%s", s);
     getchar();
     while(1)
     {
@@ -181,10 +181,11 @@ Status checkString(char s[])  //检查字符串的输入
         printf("表达式输入错误!请重新输入：");
         inputString(s);
     }
-    printf("\n最终的表达式为：");
+	printf("\n最终的表达式为:");
     for(int k = 0; s[k] != '\0'; k++)
         printf("%c" ,s[k]);
         printf("\n");
+        printf("bra = %d\n", bracket);
     return SUCCESS;
 }
 
@@ -220,14 +221,14 @@ Status convertString(char s1[],char s2[],LinkStack *s)//将中缀表达式转化
         if(s1[i+1] == ')')
         {
             if(s1[i+2] == '+'||s1[i+2] == '-'||s1[i+2] == '*'||s1[i+2] == '/'||s1[i+2] == '\0'||s1[i+2] == ')')
-           {
+            {
                 if(flag == 0)
                {
                     flag = 1;
                     s2[j++] = ',';
                     printf("数字转化完毕！加个逗号\n");
                }
-           }
+            }
         }
         if(s1[i+1] == '+'||s1[i+1] == '-'||s1[i+1] == '*'||s1[i+1] == '/'||s1[i+1] == '\0')
             {
@@ -297,11 +298,11 @@ Status convertString(char s1[],char s2[],LinkStack *s)//将中缀表达式转化
             while(1)
             {
                 popLStackchar(s, &s2[j++]);
-                if(s->top->cData == '(')
+                if(s->top == NULL||s->top->cData == '(')
                     break;
             }
             popLStackchar(s, &c);
-            printf("出栈完毕！栈顶元素为：%c\n", getTopLStackchar(s));
+            printf("出栈完毕！栈顶元素为:%c\n", getTopLStackchar(s));
         }
         i++;
     }
@@ -310,7 +311,7 @@ Status convertString(char s1[],char s2[],LinkStack *s)//将中缀表达式转化
             printf("s1扫描完毕，将栈中元素全部给s2\n");
             popLStackchar(s, &s2[j++]);
         }
-    printf("转换完成的后缀表达式为：");
+    printf("转换完成的后缀表达式为:");
     for(i = 0;s2[i] != '\0'; i++)
         printf("%c", s2[i]);
     printf("\n");
