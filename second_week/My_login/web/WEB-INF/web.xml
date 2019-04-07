@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!-- 初始的页面 -->
+    <welcome-file-list>
+        <welcome-file>Login.html</welcome-file>
+        <welcome-file>Login.htm</welcome-file>
+        <welcome-file>Login.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- 用户名和密码验证的servlet -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.My_login.controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/servlet/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 注册-->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.My_login.controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/servlet/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <!-- 界面-->
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.My_login.controller.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/servlet/UserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpDataServlet</servlet-name>
+        <servlet-class>com.My_login.controller.UpDataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpDataServlet</servlet-name>
+        <url-pattern>/servlet/UpDataServlet</url-pattern>
+    </servlet-mapping>
+</web-app>

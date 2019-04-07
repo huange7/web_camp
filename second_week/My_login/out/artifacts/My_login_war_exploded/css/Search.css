@@ -1,0 +1,67 @@
+.table1 {
+    margin-left: 690px;
+    margin-top: 193px;
+    background-color: rgba(204, 213, 251, 0.48);
+    font-family: 微软雅黑;
+    border: none;
+    border-left-style: solid;
+    border-left-width: thick;
+    border-left-color: steelblue;
+    border-right: transparent;
+}
+.cap1{
+    font-size: -webkit-xxx-large;
+    font-family: 微软雅黑;
+    color: white;
+    margin-top: auto;
+}
+
+.td{
+    border-bottom-style: none;
+    border-left-style: outset;
+    width: 90px;
+    height: 36px;
+    font-family: cursive;
+}
+
+.th{
+    border-right: transparent;
+    border-top-style: none;
+    border-bottom-style: none;
+}
+.input{
+    border-style: none;
+    background: rgba(0, 201, 249, 0.12);
+    font-family: inherit;
+    width: 133px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.input1{
+    background: transparent;
+    border-style: none;
+    font-family: 微软雅黑;
+    font-size: large;
+    margin-left: 13px
+}
+
+.select1{
+    margin-left: 18px;
+    margin-top: 0px;
+    font-size: inherit;
+    background: transparent;
+    border-style: none;
+    font-family: 黑体;
+    display: inline-block;
+    position: relative;
+    width: 135px;
+    border-radius: 5px;
+    vertical-align: middle;
+    z-index: 2;
+}
+.a{
+    text-decoration: none;
+    color: rgba(63, 130, 118, 0.84);
+    font-family: 微软雅黑;
+}

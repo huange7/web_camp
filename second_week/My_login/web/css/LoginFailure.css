@@ -1,0 +1,16 @@
+#div1{
+    margin: 312px;
+    margin-left: 656px;
+    font-family: 楷体;
+    color: #FFEB3B;
+    width: 381px;
+    height: 170px;
+    background-color: rgba(98, 255, 253, 0.26);
+    border-radius: 37px;
+    text-align: center;
+}
+
+#a1{
+    text-decoration: blink;
+    color: white;
+}

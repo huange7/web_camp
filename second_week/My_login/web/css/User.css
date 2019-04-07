@@ -1,0 +1,32 @@
+#div1{
+    margin-left: 620px;
+    margin-top: 58px;
+    font-family: 楷体;
+    font-size: xx-large;
+    color: snow;
+}
+
+.button2{
+    background-color: rgba(255, 193, 7, 0.35);
+}
+.button3{
+    background: rgba(81, 138, 52, 0.54);
+}
+
+button{
+    background: rgba(175, 238, 238, 0.38);
+    color: white;
+    width: 733px;
+    height: 170px;
+    font-size: -webkit-xxx-large;
+    font-family: 微软雅黑;
+    border-radius: 0px;
+    border: none;
+    margin-left: 476px;
+    margin-top: 28px;
+    border-style: none;
+}
+#a1 {
+    text-decoration: none;
+    color: #fff;
+}
