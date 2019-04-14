@@ -7,7 +7,7 @@
  *  @description : 插入排序
  *  @param       : 数组指针 a, 数组长度 n
  */
-void insertSort(long *a, int n)
+void insertSort(int *a, int n)
 {
 	for (int i = 1; i < n; i++)
 	{
@@ -36,7 +36,7 @@ void insertSort(long *a, int n)
  *  @description : 归并排序（合并数组）
  *  @param       : 数组指针a，数组起点begin，数组中点mid，数组终点end，承载数组指针temp
  */
-void MergeArray(long *a, int begin, int mid, int end, long *temp)
+void MergeArray(int *a, int begin, int mid, int end, int  *temp)
 {
 	//将数组分成两个部分
 	int index = begin;
@@ -68,7 +68,7 @@ void MergeArray(long *a, int begin, int mid, int end, long *temp)
  *  @description : 归并排序
  *  @param       : 数组指针a，数组起点begin，数组终点end，承载数组指针temp
  */
-void MergeSort(long *a, int begin, int end, long *temp)
+void MergeSort(int  *a, int begin, int end, int  *temp)
 {
 	if (begin >= end)
 		return;
@@ -84,7 +84,7 @@ void MergeSort(long *a, int begin, int end, long *temp)
  *  @description : 快速排序（递归版）
  *  @param       : 数组指针a，数组起点begin，数组终点end
  */
-void QuickSort_Recursion(long *a, int begin, int end)
+void QuickSort_Recursion(int  *a, int begin, int end)
 {
 	int pos;
 	if (begin < end)
@@ -101,7 +101,7 @@ void QuickSort_Recursion(long *a, int begin, int end)
  *  @description : 快速排序（非递归版）
  *  @param       : 数组指针a，数组长度size
  */
-void QuickSort(long *a, int size)
+void QuickSort(int  *a, int size)
 {
     int begin = 0;
     int end = size;
@@ -134,7 +134,7 @@ void QuickSort(long *a, int size)
  *  @description : 快速排序（枢轴存放）
  *  @param       : 数组指针a，数组起点begin，数组终点end
  */
-int Partition(long *a, int begin, int end)
+int Partition(int  *a, int begin, int end)
 {
 	int t = a[begin];
 	while (begin < end)
@@ -155,15 +155,15 @@ int Partition(long *a, int begin, int end)
  *  @description : 计数排序
  *  @param       : 数组指针a，数组长度size，数组最大值max
  */
-void CountSort(long *a, int size, int max)
+void CountSort(int  *a, int size, int max)
 {
     int count=0;
     int min=FindExtreme(a,size,MIN);
     int range=max-min+1;
-    long * temp=(long*)malloc(sizeof(long)*range);
+    int  * temp=(int *)malloc(sizeof(int)*range);
      if (temp == NULL)
         return;
-    memset(temp,0,sizeof(long)*range);
+    memset(temp,0,sizeof(int)*range);
     for(int i=0;i<size;i++)
     {
         temp[a[i]-min]++;
@@ -183,12 +183,12 @@ void CountSort(long *a, int size, int max)
  *  @description : 基数计数排序
  *  @param       : 数组指针a，数组长度size
  */
-void RadixCountSort(long *a, int size)
+void RadixCountSort(int  *a, int size)
 {
-	long *temp[10];
+	int  *temp[10];
 	for (int i = 0; i < 10; i++)
 	{
-		temp[i] = (long *)malloc(sizeof(long) * (size + 1));
+		temp[i] = (int  *)malloc(sizeof(int ) * (size + 1));
 		temp[i][0] = 0;
 	}
 
@@ -210,7 +210,7 @@ void RadixCountSort(long *a, int size)
 	}
 }
 
-int GetNumInPos(long num, int pos)
+int GetNumInPos(int num, int pos)
 {
 	int temp = 1;
 	for (int i = 0; i < pos - 1; i++)
@@ -218,20 +218,20 @@ int GetNumInPos(long num, int pos)
 
 	return (num / temp) % 10;
 }
-void PrintArray(long *a, int size)
+void PrintArray(int  *a, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		printf("%ld\t", a[i]);
+		printf("%d\t", a[i]);
 		if (i!=0 && i % 15 == 0)
 			printf("\n");
 	}
 	printf("\n");
 }
 
-long FindExtreme(long *a,int size,int type)
+int  FindExtreme(int  *a,int size,int type)
 {
-	long extreme = a[0];
+	int  extreme = a[0];
 	for (int i = 0; i < size; i++)
 	{
 		if (type == MAX && a[i] > extreme)
@@ -247,7 +247,7 @@ long FindExtreme(long *a,int size,int type)
  *  @description : 颜色排序
  *  @param       : 数组指针a（只含0，1，2元素），数组长度size
  */
-void ColorSort(long *a, int size)
+void ColorSort(int  *a, int size)
 {
 	int i, p1=0, p2=size;
 	for (i = 0; i < p2; i++)
@@ -266,7 +266,7 @@ void ColorSort(long *a, int size)
 	}
 }
 
-void swap(long *a,long *b)
+void swap(int *a,int  *b)
 {
 	int t;
 	t = *a;
@@ -279,16 +279,16 @@ void swap(long *a,long *b)
  *  @description : 在一个无序序列中找到第K大的数
  *  @param       : 数组指针a，数组长度size
  */
-int FindData(long *a, int size)
+int FindData(int  *a, int size)
 {
 	int n;
 	int begin = 0;
 	int end = size;
-	printf("你想查第几小的数？");
+	printf("你想查第几小的数?");
 	inputCheck(&n);
 	while(n<1||n>10000)
     {
-        printf("输入错误！请在有效范围内输入：");
+        printf("输入错误！请在有效范围内输入:");
         inputCheck(&n);
     }
 	while (1)
@@ -326,12 +326,8 @@ void inputCheck(int *val)
 }
 
 
-void Catalogue(long *a,int size)
+void Catalogue(int  *a,int *b,int *c,int size1,int size2,int size3)
 {
-	while (1)
-	{
-
-
 		int i;
 		printf("\n\n*********************************************************************************************************\n");
 		printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
@@ -349,196 +345,300 @@ void Catalogue(long *a,int size)
 		printf("*\t\t\t\t         8.  找到第K值               \t\t\t\t\t\t*\n");
 		printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
 		printf("*********************************************************************************************************\n");
-		SelectOpe(a, size);
-		printf("\n\n你想继续吗?(1：继续/  其他： 退出)");
-		inputCheck(&i);
-		if (i != 1)
-			break;
-	}
+		SelectOpe(a,b,c,size1,size2,size3);
 }
 
-void SelectOpe(long *a, int size)
+void SelectOpe(int  *a,int *b,int *c,int size1,int size2,int size3)
 {
-	int n;
-	printf("\n你想执行那个操作 ?");
-	inputCheck(&n);
-	while (n < 0 || n > 8)
-	{
-		printf("\n输入错误！请重输：");
-		inputCheck(&n);
-	}
-	switch (n)
-	{
-		case 1:insertSort(a,size);PrintArray(a,size); break;
-		case 2:
-		{
-			int temp[10000];
-			MergeSort(a, 0, size, temp);
-			PrintArray(a,size);
-			break;
-		}
-		case 3:
-			QuickSort_Recursion(a, 0, size);
-			PrintArray(a,size);
-			break;
-		case 4:
-		{
-            QuickSort(a, size);
-            PrintArray(a,size);
-			break;
-		}
-		case 5:
-		{
-			int max = FindExtreme(a, size, MAX);
-			CountSort(a, size, max);
-			PrintArray(a,size);
-			break;
-		}
-		case 6:
-		{
-			RadixCountSort(a, size);
-			PrintArray(a,size);
-			break;
-		}
-		case 7:
-		{
-			long *temp = (long*)malloc(sizeof(long)*10000);
-			for(int i=0;i<10000;i++)
-			temp[i]=rand()%3;
-			PrintArray(temp,size);
-			printf("上面是刚刚生成的数组，按任意键开始颜色排序！\n");
-			getchar();
-			ColorSort(temp, size);
-			PrintArray(temp,size);
-			break;
-		}
-		case 8:
-		{
-            int t = FindData(a, size);
-			printf("这个值是：%d\n", t);
-			break;
-		}
-	}
-}
-
-void generate(long *a)
-{
-	printf("\n\n*********************************************************************************************************\n");
-	printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
-	printf("*\t\t\t\t         你想生成的数组的类型：      \t\t\t\t\t\t*\n");
-	printf("*\t\t\t\t         使用系统自带数组：          \t\t\t\t\t\t*\n");
-	printf("*\t\t\t\t 1. 0-10000   2. 0-50000  3.0-200000 \t\t\t\t\t\t*\n");
-	printf("*\t\t\t\t         使用现场生成数组：          \t\t\t\t\t\t*\n");
-	printf("*\t\t\t\t 4. 0-10000   5. 0-50000  6.0-200000 \t\t\t\t\t\t*\n");
-	printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
-	printf("*********************************************************************************************************\n");
-	int n;
-	inputCheck(&n);
-	while(n<1||n>6)
-    {
-        printf("输入错误！请重输:");
+        int n, time;
+        int start, finally;
+        int temp[100];
+        printf("\n你想执行那个操作 ?");
         inputCheck(&n);
+        while (n < 0 || n > 8)
+        {
+            printf("\n输入错误！请重输:");
+            inputCheck(&n);
+        }
+        switch (n)
+        {
+            case 1:{
+                start = clock();
+                insertSort(a,size1);
+                finally = clock()-start;
+                printf("%d位数字排序所用时间为%dms\n",size1+1,finally);
+                start = clock();
+                insertSort(b,size2);
+                finally = clock()-start;
+                printf("%d位数字排序所用时间为%dms\n",size2+1,finally);
+                start = clock();
+                insertSort(c,size3);
+                finally = clock()-start;
+                printf("%d位数字排序所用时间为%dms\n",size3+1,finally);
+                start = clock();
+                for(time = 0;time<100000;time++)
+                {
+                        randomArray(temp,100);
+                        insertSort(temp, 99);
+                }
+                finally = clock()-start;
+                printf("100*100k排序所用时间为%dms\n",finally);
+                break;
+                }
+            case 2:
+            {
+                int *temp1 = (int*)malloc(sizeof(int)*10000);
+                start = clock();
+                MergeSort(a, 0, size1, temp1);
+                finally = clock()-start;
+                printf("%d位数字排序所用时间为%dms\n",size1+1,finally);
+                int *temp2 = (int*)malloc(sizeof(int)*50000);
+                start = clock();
+                MergeSort(b,0,size2,temp2);
+                finally = clock()-start;
+                printf("%d位数字排序所用时间为%dms\n",size2+1,finally);
+                int *temp3 = (int*)malloc(sizeof(int)*200000);
+                start = clock();
+                MergeSort(c, 0, size3, temp3);
+                finally = clock()-start;
+                printf("%d位数字排序所用时间为%dms\n",size3+1,finally);
+                start = clock();
+                for(time = 0;time<100000;time++)
+                {
+                        randomArray(temp,100);
+                        MergeSort(temp, 0, 99, temp1);
+                }
+                finally = clock()-start;
+                printf("100*100k排序所用时间为%dms\n",finally);
+                free(temp1);
+                free(temp2);
+                free(temp3);
+                break;
+            }
+            case 3:
+            {
+                start = clock();
+                QuickSort_Recursion(a, 0, size1);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size1+1, finally);
+                start = clock();
+                QuickSort_Recursion(b, 0, size2);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size2+1, finally);
+                start = clock();
+                QuickSort_Recursion(c, 0, size3);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size3+1, finally);
+                start = clock();
+                for(time = 0;time<100000;time++)
+                {
+                        randomArray(temp,100);
+                        QuickSort_Recursion(temp, 0 , 99);
+                }
+                finally = clock()-start;
+                printf("100*100k排序所用时间为%dms\n",finally);
+                break;
+            }
+            case 4:
+            {
+                start = clock();
+                QuickSort(a, size1);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size1+1, finally);
+                start = clock();
+                QuickSort(b, size2);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size2+1, finally);
+                start = clock();
+                QuickSort(c, size3);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size3+1, finally);
+                start = clock();
+                for(time = 0;time<10000;time++)
+                {
+                        randomArray(temp,100);
+                        QuickSort(temp, 99);
+                }
+                finally = clock()-start;
+                printf("程序处理100*100k的数据会崩溃，所以这里只用了100*10k\n");
+                printf("100*10k排序所用时间为%dms\n",finally);
+                break;
+            }
+            case 5:
+            {
+                start = clock();
+                int max = FindExtreme(a, size1, MAX);
+                CountSort(a, size1, max);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size1+1, finally);
+                start = clock();
+                max = FindExtreme(b, size2, MAX);
+                CountSort(b, size2, max);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size2+1, finally);
+                start = clock();
+                max = FindExtreme(c, size3, MAX);
+                CountSort(c, size3, max);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size3+1, finally);
+                start = clock();
+                for(time = 0;time<100000;time++)
+                {
+                        randomArray(temp,100);
+                        max = FindExtreme(temp,99,MAX);
+                        CountSort(temp,99,max);
+                }
+                finally = clock()-start;
+                printf("100*100k排序所用时间为%dms\n",finally);
+                break;
+            }
+            case 6:
+            {
+                start = clock();
+                RadixCountSort(a, size1);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size1+1, finally);
+                start = clock();
+                RadixCountSort(b, size2);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size2+1, finally);
+                start = clock();
+                RadixCountSort(c, size3);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size3+1, finally);
+                start = clock();
+                for(time = 0;time<100000;time++)
+                {
+                        randomArray(temp,100);
+                        RadixCountSort(temp, 99);
+                }
+                finally = clock()-start;
+                printf("100*100k排序所用时间为%dms\n",finally);
+                break;
+            }
+            case 7:
+            {
+                int  *temp1 = (int *)malloc(sizeof(int)*10000);
+                for(int i=0;i<10000;i++)
+                temp1[i]=rand()%3;
+                start = clock();
+                ColorSort(temp1, size1);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size1+1, finally);
+                int* temp2 = (int*)malloc(sizeof(int)*50000);
+                for(int i=0;i<50000;i++)
+                temp2[i]=rand()%3;
+                start = clock();
+                ColorSort(temp2, size2);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size2+1, finally);
+                int* temp3 = (int*)malloc(sizeof(int)*200000);
+                for(int i=0;i<200000;i++)
+                temp3[i]=rand()%3;
+                start = clock();
+                ColorSort(temp3, size3);
+                finally = clock()-start;
+                printf("%d 位所用时间为%d ms\n", size3+1, finally);
+                start = clock();
+                for(time = 0;time<100000;time++)
+                {
+                        for(int i = 0; i<100;i++)
+                            temp[i]=rand()%3;
+                        ColorSort(temp, 99);
+                }
+                finally = clock()-start;
+                printf("100*100k排序所用时间为%dms\n",finally);
+                break;
+            }
+            case 8:
+            {
+                int t = FindData(a, size1);
+                printf("%d位的这个值是：%d\n",t);
+                t = FindData(b, size2);
+                printf("%d位的这个值是：%d\n",t);
+                t = FindData(c, size3);
+                printf("%d位的这个值是：%d\n",t);
+                break;
+            }
+        }
+}
+
+void generate(int  *a, int *b, int *c)
+{
+	while(1)
+    {
+        printf("\n\n*********************************************************************************************************\n");
+        printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
+        printf("*\t\t\t\t         你想生成的数组的类型：      \t\t\t\t\t\t*\n");
+        printf("*\t\t\t\t       1.    使用系统自带数          \t\t\t\t\t\t*\n");
+        printf("*\t\t\t\t       2.    使用现场生成数组：      \t\t\t\t\t\t*\n");
+        printf("*\t\t\t\t\t\t\t\t\t\t\t\t\t\t*\n");
+        printf("*********************************************************************************************************\n");
+        int n;
+        inputCheck(&n);
+        while(n<1||n>2)
+        {
+            printf("输入错误！请重输:");
+            inputCheck(&n);
+        }
+        FILE *fp;
+        switch (n)
+        {
+        case 1: {
+            if ((fp = fopen("Output.txt", "r")) == NULL)
+            {
+                printf("无法打开该文件！\n");
+                exit(0);
+            }
+            for (int i = 0; i < 10000; i++)
+            {
+                fscanf(fp, "%d\t", &a[i]);
+            }
+            for (int i = 0; i < 50000; i++)
+            {
+                fscanf(fp, "%d\t", &b[i]);
+            }
+            for (int i = 0; i < 200000; i++)
+            {
+                fscanf(fp, "%d\t", &c[i]);
+            }
+            fclose(fp);
+            printf("导入成功！\n");
+            break;
+        }
+        case 2: {
+            if ((fp = fopen("Input.txt", "w+")) == NULL)
+            {
+                printf("无法打开该文件！\n");
+                exit(0);
+            }
+            for (int i = 0; i < 10000; i++)
+            {
+                a[i] = rand();
+                fprintf(fp, "%d\t", a[i]);
+            }
+            for (int i = 0; i < 50000; i++)
+            {
+                b[i] = rand();
+                fprintf(fp, "%d\t", b[i]);
+            }
+            for (int i = 0; i < 200000; i++)
+            {
+                c[i] = rand();
+                fprintf(fp, "%d\t", c[i]);
+            }
+            fclose(fp);
+            printf("生成成功！\n");
+            break;
+        }
+        }
+    Catalogue(a,b,c,9999,49999,199999);
+    printf("你想继续吗？\n");
+    inputCheck(&n);
+    if(n != 1)
+    break;
     }
-	FILE *fp;
-	switch (n)
-	{
-	case 1: {
-		if ((fp = fopen("FirstLayer.txt", "r")) == NULL)
-		{
-			printf("无法打开该文件！\n");
-			exit(0);
-		}
-		for (int i = 0; i < 10000; i++)
-		{
-			fscanf(fp, "%ld\t", &a[i]);
-		}
-		fclose(fp);
-		printf("导入成功！\n");
-		break;
-	}
-	case 2: {
-		if ((fp = fopen("SecendLayer.txt", "r")) == NULL)
-		{
-			printf("无法打开该文件！\n");
-			exit(0);
-		}
-		for (int i = 0; i < 10000; i++)
-		{
-			fscanf(fp, "%ld\t", &a[i]);
-		}
-		fclose(fp);
-		printf("导入成功！\n");
-		break;
-	}
-	case 3: {
-		if ((fp = fopen("ThirdLayer.txt", "r")) == NULL)
-		{
-			printf("无法打开该文件！\n");
-			exit(0);
-		}
-		for (int i = 0; i < 10000; i++)
-		{
-			fscanf(fp, "%ld\t", &a[i]);
-		}
-		fclose(fp);
-		printf("导入成功！\n");
-		break;
-	}
-	case 4: {
-		if ((fp = fopen("FirstLayer.txt", "w+")) == NULL)
-		{
-			printf("无法打开该文件！\n");
-			exit(0);
-		}
-		for (int i = 0; i < 10000; i++)
-		{
-			a[i] = rand() % (10001);
-			fprintf(fp, "%ld\t", a[i]);
-			if (i != 0&&i % 9 == 0)
-				fprintf(fp, "\n");
-			printf("%ld\t", a[i]);
-		}
-		fclose(fp);
-		printf("生成成功！\n");
-		break;
-	}
-	case 5: {
-		if ((fp = fopen("SecendLayer.txt", "w+")) == NULL)
-		{
-			printf("无法打开该文件！\n");
-			exit(0);
-		}
-		for (int i = 0; i < 10000; i++)
-		{
-			a[i] = (rand() % 50001 )*1.526;
-			fprintf(fp, "%ld\t", a[i]);
-			if (i != 0 && i % 9 == 0)
-				fprintf(fp, "\n");
-			printf("%ld\t", a[i]);
-		}
-		fclose(fp);
-		printf("生成成功！\n");
-		break;
-	}
-	case 6: {
-		if ((fp = fopen("ThirdLayer.txt", "w+")) == NULL)
-		{
-			printf("无法打开该文件！\n");
-			exit(0);
-		}
-		for (int i = 0; i < 10000; i++)
-		{
-			a[i] = (rand() % 50001)*6.1038;
-			fprintf(fp, "%ld\t", a[i]);
-			if (i != 0 && i % 9 == 0)
-				fprintf(fp, "\n");
-			printf("%ld\t", a[i]);
-		}
-		fclose(fp);
-		printf("生成成功！\n");
-		break;
-	}
-	}
+
 }
 
 Status initStack(Stack *s,int sizes)  //初始化栈
@@ -596,4 +696,10 @@ Status popStack(Stack *s,int *data)   //出栈
     *data=s->data[s->top];
     s->top--;
     return SUCCESS;
+}
+
+void randomArray(int *temp,int size)
+{
+    for(int i = 0; i<size; i++)
+        temp[i] = rand();
 }
